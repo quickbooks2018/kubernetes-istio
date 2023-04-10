@@ -1,0 +1,47 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fleetman-webapp-ingress
+  namespace: default
+  annotations:
+  # https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/guide/tasks/ssl_redirect/
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/group.name: cloudgeeksca
+    alb.ingress.kubernetes.io/group.order: '1'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:684473621611:certificate/c4e9bc2a-9a5b-42b6-8601-7f029433da22
+    alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-TLS-1-2-2017-01
+    alb.ingress.kubernetes.io/load-balancer-name: cloudgeeks-alb
+    alb.ingress.kubernetes.io/backend-protocol: HTTPS
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
+    alb.ingress.kubernetes.io/healthcheck-path: /
+    alb.ingress.kubernetes.io/healthcheck-port: traffic-port
+    alb.ingress.kubernetes.io/healthcheck-protocol: HTTPS
+    alb.ingress.kubernetes.io/healthcheck-interval-seconds: '30'
+    alb.ingress.kubernetes.io/healthcheck-timeout-seconds: '5'
+    alb.ingress.kubernetes.io/healthy-threshold-count: '2'
+    alb.ingress.kubernetes.io/unhealthy-threshold-count: '2'
+    alb.ingress.kubernetes.io/success-codes: '200,302'
+    alb.ingress.kubernetes.io/load-balancer-attributes: deletion_protection.enabled=false
+    # Extra Security
+     # Cloudflare IPs
+    # https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/guide/ingress/annotations/
+   # alb.ingress.kubernetes.io/ip-address-type: dualstack
+   # alb.ingress.kubernetes.io/inbound-cidrs: "103.21.244.0/22, 103.22.200.0/22, 103.31.4.0/22, 104.16.0.0/12, 108.162.192.0/18, 131.0.72.0/22, 141.101.64.0/18, 162.158.0.0/15, 172.64.0.0/13, 173.245.48.0/20, 188.114.96.0/20, 190.93.240.0/20, 197.234.240.0/22, 198.41.128.0/17, 199.27.128.0/21, 2400:cb00::/32, 2606:4700::/32, 2803:f800::/32"
+   # alb.ingress.kubernetes.io/manage-backend-security-group-rules: "true"
+
+spec:
+  ingressClassName: alb
+  rules:
+  - host: webapp.cloudgeeks.ca
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx
+            port:
+              number: 443
