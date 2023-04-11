@@ -42,6 +42,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: nginx
+            name: fleetman-webapp
             port:
               number: 443

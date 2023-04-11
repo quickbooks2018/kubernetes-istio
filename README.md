@@ -2,6 +2,13 @@
 
 - Sample Repo https://github.com/DickChesterwood/istio-fleetman.git
 
+### TLS
+- use tls.sh to generate self signed certificate
+
+```bash
+kubectl create -n default secret generic tls-secret --from-file=tls/cmcloudlab828.info.key --from-file=tls/cmcloudlab828.info.crt
+```
+
 - Istioctl Installation
 ```istio
 curl -L https://istio.io/downloadIstio | sh -

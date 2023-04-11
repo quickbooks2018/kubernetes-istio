@@ -1,0 +1,9 @@
+# kubectl apply -n default -f 1-allow-default-permissive.yaml
+---
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: default
+spec:
+  mtls:
+    mode: PERMISSIVE
