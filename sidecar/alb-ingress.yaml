@@ -10,7 +10,7 @@ metadata:
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/group.name: cloudgeeksca
     alb.ingress.kubernetes.io/group.order: '1'
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:684473621611:certificate/c4e9bc2a-9a5b-42b6-8601-7f029433da22
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:791903720429:certificate/47aa0a99-1f9d-49f9-9ce3-82208a95bdb0
     alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-TLS-1-2-2017-01
     alb.ingress.kubernetes.io/load-balancer-name: cloudgeeks-alb
     alb.ingress.kubernetes.io/backend-protocol: HTTPS
@@ -35,7 +35,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-  - host: webapp.cloudgeeks.ca
+  - host: webapp.cmcloudlab828.info
     http:
       paths:
       - path: /

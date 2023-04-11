@@ -2,9 +2,9 @@
 
 #Define the domain name
 
-DOMAIN='saqlainmushtaq.com'
+DOMAIN='cmcloudlab828.info'
 SUBDOMAIN='*'
-DAYS='36500'
+DAYS='36500'    # 100 years
 default_bits='2048'
 
 #Organization Details
