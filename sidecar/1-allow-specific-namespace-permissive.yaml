@@ -1,9 +1,18 @@
-# kubectl apply -n default -f 1-allow-default-permissive.yaml
+# kubectl apply -n default -f 1-allow-specific-namespace-permissive.yaml
+# Policy to allow mTLS strict for all workloads, but leave port 80 to plaintext:
+# https://istio.io/latest/docs/reference/config/security/peer_authentication/
 ---
 apiVersion: security.istio.io/v1beta1
 kind: PeerAuthentication
 metadata:
   name: default
+  namespace: default
 spec:
+  selector:
+    matchLabels:
+      app: webapp
   mtls:
-    mode: PERMISSIVE
+    mode: STRICT
+  portLevelMtls:
+    443:
+      mode: DISABLE
