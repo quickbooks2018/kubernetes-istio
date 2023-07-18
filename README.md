@@ -53,6 +53,8 @@ helm upgrade --install istio-base-release -n istio-system --create-namespace --v
 
 - helm repo update
 
+- helm search repo istio/istiod --versions
+  
 - helm show values istio/istiod --version 1.17.2 > istio-istiod-values.yaml
 
 ```helm
