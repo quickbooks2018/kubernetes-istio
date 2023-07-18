@@ -36,6 +36,8 @@ istioctl verify-install
 
 - helm search repo istio/base
 
+- helm search repo istio/base --versions
+
 - helm show values istio/base --version 1.17.2 > istio-base-values.yaml
 
 
