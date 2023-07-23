@@ -142,11 +142,11 @@ module "eks" {
   eks_managed_node_groups = {
 
     on-demand = {
-      min_size     = 1
-      max_size     = 1
-      desired_size = 1
+      min_size     = 3
+      max_size     = 3
+      desired_size = 3
       update_config = {
-        max_unavailable = 1
+        max_unavailable = 3
       }
 
       iam_role_additional_policies = {
