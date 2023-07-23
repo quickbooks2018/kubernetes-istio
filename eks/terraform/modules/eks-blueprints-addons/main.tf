@@ -23,7 +23,7 @@ module "kubernetes_addons" {
     name       = "karpenter"
     chart      = "karpenter"
     repository = "oci://public.ecr.aws/karpenter"
-    version    = "v0.27.1"
+    version    = "v0.29.0"
     namespace  = "karpenter"
   }
 }
