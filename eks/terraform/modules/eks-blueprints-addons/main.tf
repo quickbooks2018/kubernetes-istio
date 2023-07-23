@@ -4,7 +4,7 @@
 # Example https://github.com/aws-ia/terraform-aws-eks-blueprints/blob/main/examples/karpenter/main.tf
 # https://github.com/aws-ia/terraform-aws-eks-blueprints?ref=v4.25.0# Sub Module
 module "kubernetes_addons" {
-  source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons?ref=v4.27.0"
+  source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons?ref=v4.32.1"
 
   eks_cluster_id               = var.cluster_name
   eks_cluster_endpoint         = var.cluster_endpoint
