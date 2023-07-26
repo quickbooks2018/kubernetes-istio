@@ -76,3 +76,8 @@ kubectl label namespace default istio-injection=enabled
 ```
 kubectl label namespace default istio-injection-
 ```
+
+- Vault Istio Combine (this Annotaion will fix it) 1.18.1 Istio
+```bash
+vault.hashicorp.com/agent-init-first: 'true'
+```
