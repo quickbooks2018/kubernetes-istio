@@ -62,7 +62,7 @@ helm upgrade --install istiod-release -n istio-system --create-namespace --versi
 ```
 
 ```helm
-helm upgrade --install istiod-release -n istio-system --create-namespace --version 1.18.2 istio/istiod --set telemetry.enabled=true --set global.istioNamespace=istio-system -f values.yaml ./ --wait
+helm upgrade --install istiod-release -n istio-system --create-namespace --version 1.18.2 istio/istiod --set telemetry.enabled=true --set global.istioNamespace=istio-system -f values.yaml --wait
 ```
 - https://istio.io/latest/docs/tasks/observability/distributed-tracing/opencensusagent/
 - values.yaml 
