@@ -5,7 +5,7 @@
 - Istioctl Installation
 ```istio
 curl -L https://istio.io/downloadIstio | sh -
-cd istio-1.18.1
+cd istio-1.18.2
 ls
 cd bin
 ls
@@ -15,7 +15,7 @@ cp istioctl /usr/local/bin
 
 - Istioctl Adds Installation
 ```istio
-cd istio-1.18.1 && samples/addons
+cd istio-1.18.2 && samples/addons
 kubectl apply -f .
 ```
 
@@ -38,11 +38,11 @@ istioctl verify-install
 
 - helm search repo istio/base --versions
 
-- helm show values istio/base --version 1.18.1 > istio-base-values.yaml
+- helm show values istio/base --version 1.18.2 > istio-base-values.yaml
 
 
 ```helm
-helm upgrade --install istio-base-release -n istio-system --create-namespace --version 1.18.1 istio/base --set global.istioNamespace=istio-system --wait
+helm upgrade --install istio-base-release -n istio-system --create-namespace --version 1.18.2 istio/base --set global.istioNamespace=istio-system --wait
 ```
 
 - Istiod
@@ -55,14 +55,14 @@ helm upgrade --install istio-base-release -n istio-system --create-namespace --v
 
 - helm search repo istio/istiod --versions
   
-- helm show values istio/istiod --version 1.18.1 > istio-istiod-values.yaml
+- helm show values istio/istiod --version 1.18.2 > istio-istiod-values.yaml
 
 ```helm
-helm upgrade --install istiod-release -n istio-system --create-namespace --version 1.18.1 istio/istiod --set telemetry.enabled=true --set global.istioNamespace=istio-system --wait
+helm upgrade --install istiod-release -n istio-system --create-namespace --version 1.18.2 istio/istiod --set telemetry.enabled=true --set global.istioNamespace=istio-system --wait
 ```
 
 ```helm
-helm upgrade --install gateway -n istio-ingress --create-namespace istio/gateway --version 1.18.1 --wait
+helm upgrade --install gateway -n istio-ingress --create-namespace istio/gateway --version 1.18.2 --wait
 ```
 
 - Label the namespace
@@ -77,7 +77,7 @@ kubectl label namespace default istio-injection=enabled
 kubectl label namespace default istio-injection-
 ```
 
-- Vault Istio Combine (this Annotaion will fix it) 1.18.1 Istio
+- Vault Istio Combine (this Annotaion will fix it) 1.18.2 Istio
 ```bash
 vault.hashicorp.com/agent-init-first: 'true'
 ```
