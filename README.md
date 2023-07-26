@@ -74,7 +74,7 @@ meshConfig:
     extensionProviders:
     - name: "opencensus"
       opencensus:
-          service: "opentelemetry-collector.istio-system.svc.cluster.local"
+          service: "collection-otelagent.sumologic:55678"
           port: 55678
           context:
           - W3C_TRACE_CONTEXT
