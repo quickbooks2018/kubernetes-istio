@@ -79,6 +79,31 @@ meshConfig:
           context:
           - W3C_TRACE_CONTEXT
 ```
+- updated-istio-config.yaml
+```
+defaultConfig:
+  discoveryAddress: istiod.istio-system.svc:15012
+  proxyMetadata: {}
+  tracing:
+    openConsensusAgent:
+      address: collection-sumologic-otelcol.sumologic:55678
+      zipkin:
+        address: zipkin.istio-system:9411
+defaultProviders:
+  tracing: opencensus
+enablePrometheusMerge: true
+enableTracing: true
+extensionProviders:
+  - name: opencensus
+    opencensus:
+      context:
+        - W3C_TRACE_CONTEXT
+      port: 55678
+      service: collection-sumologic-otelcol.sumologic:55678
+rootNamespace: istio-system
+trustDomain: cluster.local
+```
+
 
 ```helm
 helm upgrade --install gateway -n istio-ingress --create-namespace istio/gateway --version 1.18.2 --wait
