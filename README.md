@@ -87,8 +87,8 @@ defaultConfig:
   tracing:
     openConsensusAgent:
       address: collection-sumologic-otelcol.sumologic:55678
-      zipkin:
-        address: zipkin.istio-system:9411
+    zipkin:
+      address: zipkin.istio-system:9411
 defaultProviders:
   tracing: opencensus
 enablePrometheusMerge: true
