@@ -68,16 +68,27 @@ helm upgrade --install istiod-release -n istio-system --create-namespace --versi
 - values.yaml 
 ```values
 meshConfig:
-    defaultProviders:
-        tracing: "opencensus"
-    enableTracing: true
-    extensionProviders:
-    - name: "opencensus"
+  defaultConfig:
+    discoveryAddress: istiod.istio-system.svc:15012
+    proxyMetadata: { }
+    tracing:
+      openConsensusAgent:
+        address: collection-sumologic-otelcol.sumologic:55678
+      zipkin:
+        address: zipkin.istio-system:9411
+  defaultProviders:
+    tracing: opencensus
+  enablePrometheusMerge: true
+  enableTracing: true
+  extensionProviders:
+    - name: opencensus
       opencensus:
-          service: "collection-sumologic-otelcol.sumologic:55678"
-          port: 55678
-          context:
+        context:
           - W3C_TRACE_CONTEXT
+        port: 55678
+        service: collection-sumologic-otelcol.sumologic:55678
+  rootNamespace: istio-system
+  trustDomain: cluster.local
 ```
 - updated-istio-config.yaml
 ```
