@@ -72,6 +72,8 @@ meshConfig:
     discoveryAddress: istiod.istio-system.svc:15012
     proxyMetadata: {}
     tracing:
+      openCensusAgent:
+        address: collection-sumologic-otelcol.sumologic.svc.cluster.local:55678
       zipkin:
         address: zipkin.istio-system:9411
   defaultProviders:
